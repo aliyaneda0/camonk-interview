@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3001/blogs"; // replace
+const API_URL = "http://localhost:3001"; 
 
 export interface Blog {
   id: string;
