@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import  {Blog}  from "@/service/api";
+import type { Blog } from "@/service/api";
 import { Link } from "react-router-dom";
 
 export default function BlogCard({ blog }: { blog: Blog }) {
