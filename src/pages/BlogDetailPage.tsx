@@ -12,13 +12,15 @@ type Blog = {
 };
 
 export default function BlogDetailPage() {
-  const { id } = useParams();
+   const { id } = useParams<{ id: string }>();
 
-  const { data: blog, isLoading } = useQuery<Blog>({
-    queryKey: ["blog", id],
-    queryFn: () => getBlogById(id!),
-    enabled: !!id,
-  });
+
+  const { data: blog, isLoading } = useQuery({
+  queryKey: ["blog", id],
+  queryFn: () => getBlogById(id),
+  enabled: !!id,
+ });
+
 
   if (isLoading) return <p className="p-6">Loading...</p>;
   if (!blog) return <p className="p-6">Blog not found</p>;
