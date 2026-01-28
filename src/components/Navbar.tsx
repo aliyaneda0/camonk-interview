@@ -1,21 +1,23 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Navbar() {
   const [blogId, setBlogId] = useState("")
-  const [open, setOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navigate = useNavigate()
 
   const handleSearch = () => {
     if (!blogId.trim()) return
     navigate(`/blog/${blogId}`)
     setBlogId("")
-    setOpen(false)
+    // setOpen(false)
   }
 
   return (
-    <nav className="fixed top-4 left-1/2 z-50 w-[95%] -translate-x-1/2 rounded-2xl bg-white/80 backdrop-blur-md shadow-lg">
-      <div className="flex items-center justify-between px-6 py-3">
+    <nav className="  max-w-[68rem] mx-auto fixed top-4 left-1/2 z-50 w-[95%] -translate-x-1/2 rounded-2xl bg-white/80 backdrop-blur-md shadow-lg">
+      <div className=" max-w-[64rem] flex items-center justify-between mx-auto py-3">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold text-gray-800">
           Blogify
@@ -47,20 +49,20 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-2xl"
-        >
-          ☰
-        </button>
+         <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-xl md:hidden"
+          >
+            <GiHamburgerMenu  color = "blue-300" />
+          </button>
       </div>
 
       {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden border-t px-6 py-4 space-y-4">
-          <Link to="/" onClick={() => setOpen(false)} className="block">Home</Link>
-          <Link to="/blogs" onClick={() => setOpen(false)} className="block">Show Blogs</Link>
-          <Link to="/post" onClick={() => setOpen(false)} className="block">Post Blog</Link>
+      {menuOpen && (
+        <div className="md:hidden border-t px-6 py-4 gap-4 space-y-4 ">
+          <Link to="/" onClick={() => setMenuOpen(false)} className="block">Home</Link>
+          <Link to="/blogs" onClick={() => setMenuOpen(false)} className="block">Show Blogs</Link>
+          <Link to="/post" onClick={() => setMenuOpen(false)} className="block">Post Blog</Link>
 
           <div className="flex gap-2">
             <input

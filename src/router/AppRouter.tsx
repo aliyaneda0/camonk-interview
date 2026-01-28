@@ -5,10 +5,6 @@ import Navbar from "@/components/Navbar"
 // // import Home from "@/pages/Home"
 // import ShowBlogs from "@/pages/ShowBlogs"
 // import PostBlog from "@/pages/PostBlog"
-import BlogById from "@/pages/BlogById"
-
-
-
 
 import BlogsPage from "@/pages/BlogsPage";
 import BlogDetailPage from "@/pages/BlogDetailPage";
@@ -27,7 +23,7 @@ export default function AppRouter() {
              <Route path="/" element={<BlogsPage />} />
              <Route path="/blogs" element={<BlogsPage />} />
              <Route path="/post" element={<CreateBlogPage />} />
-             <Route path="/blog/:id" element={<BlogDetailPage />} />
+             <Route path="/blogs/:id" element={<BlogDetailPage />} />
            </Routes>
          </div>
        </>
