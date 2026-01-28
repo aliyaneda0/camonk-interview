@@ -9,17 +9,24 @@ export default function Navbar() {
   const navigate = useNavigate()
 
   const handleSearch = () => {
-    if (!blogId.trim()) return
-    navigate(`/blog/${blogId}`)
-    setBlogId("")
-    // setOpen(false)
+  const trimmedId = blogId.trim()
+
+  if (!trimmedId) {
+    alert("Please enter a blog ID")
+    return
   }
+
+  navigate(`/blog/${trimmedId}`)
+  setBlogId("")
+  
+}
+
 
   return (
     <nav className="  max-w-[68rem] mx-auto fixed top-4 left-1/2 z-50 w-[95%] -translate-x-1/2 rounded-2xl bg-white/80 backdrop-blur-md shadow-lg">
-      <div className=" max-w-[64rem] flex items-center justify-between mx-auto py-3">
+      <div className=" max-w-[68rem] flex items-center justify-between  py-3">
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-gray-800">
+        <Link to="/" className="text-xl font-bold text-gray-800 ml-1">
           Blogify
         </Link>
 
@@ -37,11 +44,11 @@ export default function Navbar() {
               value={blogId}
               onChange={(e) => setBlogId(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              className="w-40 rounded-lg border px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+              className="w-40 rounded-2xl border px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-black"
             />
             <button
               onClick={handleSearch}
-              className="rounded-lg bg-black px-3 py-1 text-sm text-white"
+              className="rounded-3xl bg-black  mr-1 px-3 py-1 text-sm text-white"
             >
               Go
             </button>
@@ -59,7 +66,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden border-t px-6 py-4 gap-4 space-y-4 ">
+        <div className="md:hidden border-t px-6 py-4 gap-4 space-y-4  animate-slideDown">
           <Link to="/" onClick={() => setMenuOpen(false)} className="block">Home</Link>
           <Link to="/blogs" onClick={() => setMenuOpen(false)} className="block">Show Blogs</Link>
           <Link to="/post" onClick={() => setMenuOpen(false)} className="block">Post Blog</Link>
