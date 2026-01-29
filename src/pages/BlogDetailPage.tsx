@@ -2,15 +2,17 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogById } from "@/service/api";
 
+
 /* -------------------- TYPES -------------------- */
-type Blog = {
-  title: string;
-  category: readonly string[];
-  description: string;
-  date: string;
-  coverImage: string;
-  content: string;
-};
+export interface Blog {
+       id: number;
+       title: string;
+       category: readonly string[];
+       description: string;
+       date: string;
+       coverImage: string;
+       content: string;
+     };
 
 /* -------------------- COMPONENT -------------------- */
 export default function BlogDetailPage() {

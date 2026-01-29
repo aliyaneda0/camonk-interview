@@ -2,13 +2,14 @@ import axios from "axios";
 
 const API_URL = "http://localhost:3001"; 
 
-export interface Blog {
-  id: string;
+export interface  Blog {
+  id: number;
   title: string;
   category: string;
   description: string;
   content: string;
-  createdAt: string;
+  date: string;
+  coverImage: string;
 }
 
 export const getBlogs = async (): Promise<Blog[]> => {
